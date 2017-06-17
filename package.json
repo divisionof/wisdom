@@ -1,0 +1,23 @@
+{
+  "name": "wisdom",
+  "version": "1.0.0",
+  "description": "divisionof/wisdom slack-bot",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divisionof/wisdom.git"
+  },
+  "keywords": [
+    "slack",
+    "slackbot",
+    "glitch",
+    "node.js"
+  ],
+  "author": "Enrique Ballesté Peralta <eballeste@divisionof.com>",
+  "license": "MIT",
+  "homepage": "https://wisdom.glitch.me",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
