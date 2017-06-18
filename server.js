@@ -5,9 +5,21 @@ const nunjucks = require('nunjucks');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+// nunjucks templating
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app,
+    watch: true
+});
+app.engine('html', nunjucks.render) ;
+app.set('view engine', 'html') ;
+
+// endpoints
 app.get("/", function(req, res) {
-  res.setHeader('Content-Type', 'text/html');
-  res.send('All difficulties are easy when they are known.');
+  response.render('index', {
+  	title: 'Wisdom',
+  	description: 'All difficulties are easy when they are known.'
+  });
 });
 
 app.post("/wisecrack", function(req, res) {
