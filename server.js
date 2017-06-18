@@ -16,7 +16,7 @@ app.set('view engine', 'html') ;
 
 // endpoints
 app.get("/", function(req, res) {
-  response.render('index', {
+  res.render('index', {
   	title: 'Wisdom',
   	description: 'All difficulties are easy when they are known.'
   });
