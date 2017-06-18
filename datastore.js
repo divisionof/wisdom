@@ -93,7 +93,7 @@ function connect() {
     try {
       mongodb.MongoClient.connect(MONGODB_URI, function(err, db) {
         if(err) reject(err);
-        collection = db.collection(process.env.COLLECTION);
+        collection = db.collection(process.env.MONGODB_COLLECTION);
         resolve(collection);
       });
     } catch(ex) {
