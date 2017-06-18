@@ -21,7 +21,7 @@ app.set('view engine', 'html') ;
 app.get("/", function(req, res) {
   res.render('index', {
   	title: 'Wisdom',
-  	description: 'All difficulties are easy when they are known.'
+  	description: 'all difficulties are easy when they are known'
   });
 });
 
