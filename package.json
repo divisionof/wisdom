@@ -22,7 +22,9 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "nunjucks": "^3.0.1"
+    "mongodb": "^2.2.28",
+    "nunjucks": "^3.0.1",
+    "synchronize": "^2.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
