@@ -5,6 +5,9 @@ const nunjucks = require('nunjucks');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+// serving static files
+app.use(express.static('public'));
+
 // nunjucks templating
 nunjucks.configure('views', {
     autoescape: true,
