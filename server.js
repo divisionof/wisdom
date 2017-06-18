@@ -17,29 +17,37 @@ nunjucks.configure('views', {
 app.engine('html', nunjucks.render) ;
 app.set('view engine', 'html') ;
 
+// db
+var datastore = require('./datastore').sync;
+datastore.initializeApp(app);
+
 // endpoints
-app.get("/", function(req, res) {
+app.get('/', function(req, res) {
   res.render('index', {
   	title: 'Wisdom',
   	description: 'all difficulties are easy when they are known'
   });
 });
 
-app.post("/wisecrack", function(req, res) {
+app.post('/wisecrack', function(req, res) {
   // console.log(req.body)
   const {command, text, user_name, token} = req.body;
   console.log(`got a command from ${user_name}: ${command} ${text}`);
   
   if(token != process.env.SLACK_TOKEN){ //Prevent endpoint from being being used nefariously.
-    res.send("Invalid token...");
+    res.send('Invalid token...');
     return;
   }
-  
-  const response = " Wisdom of the gods ";
+
+  //get pearls of wisdom from db
+  var wisdom = datastore.get('pearls');
+  console.log(wisdom);
+
+  const response = ' Wisdom of the gods ';
   
   res.setHeader('Content-Type', 'application/json')
   res.send(JSON.stringify({ 
-    response_type: "ephemeral",
+    response_type: 'ephemeral',
     text: response + text
   }));
 });
