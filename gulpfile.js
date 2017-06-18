@@ -8,7 +8,7 @@ var output = './public/';
 gulp.task('sass', function () {
   return gulp
     .src(input)
-    .pipe(sass())
+    .pipe(sass({outputStyle: 'compressed'}))
     .pipe(autoprefixer())
     .pipe(gulp.dest(output));
 });
