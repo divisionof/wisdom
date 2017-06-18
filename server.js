@@ -61,7 +61,7 @@ app.post('/wisecrack', function(req, res) {
   //get pearls of wisdom from db
   var pearls = datastore.get('pearls');
   
-  pearls.sort(function() {return 0.5 - Math.random()})
+  pearls = shuffle(pearls);
   
   const response = pearls[0]['pearl'];
   
@@ -78,6 +78,25 @@ function handleError(err, res) {
     "<html><head><title>Internal Server Error!</title></head><body><pre>"
     + JSON.stringify(err, null, 2) + "</pre></body></pre>"
   );
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
 
 
