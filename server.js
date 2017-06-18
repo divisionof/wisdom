@@ -40,8 +40,11 @@ app.post('/wisecrack', function(req, res) {
   }
 
   //get pearls of wisdom from db
-  var wisdom = datastore.get('pearls');
-  console.log(wisdom);
+  datastore.connect();
+    
+  //get pearls of wisdom from db
+  var pearls = datastore.get('pearls');
+  console.log(pearls);
 
   const response = ' Wisdom of the gods ';
   
